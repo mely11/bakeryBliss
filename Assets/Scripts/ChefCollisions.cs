@@ -15,7 +15,6 @@ public class ChefCollisions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -39,5 +38,10 @@ public class ChefCollisions : MonoBehaviour
                 Destroy(other.gameObject);
                 break;
         }
+    }
+
+    public bool compare(Recipe order)
+    {
+        return order.equalsPlayerIngredients(collectedIngredients);
     }
 }
