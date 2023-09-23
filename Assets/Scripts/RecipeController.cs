@@ -10,7 +10,9 @@ public class RecipeController : MonoBehaviour
     public GameObject prefabVanillaCream;
     public GameObject prefabChocolateCream;
     public GameObject prefabStrawberries;
-
+    
+    private Camera cam;
+    private float halfWayWidth;
     private bool moving = true;
     
     // Start is called before the first frame update

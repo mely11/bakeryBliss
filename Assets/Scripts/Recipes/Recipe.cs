@@ -18,7 +18,20 @@ namespace Recipes
         // compare the users list of ingredients to this recipe
         public bool equalsPlayerIngredients(List<Ingredient> otherIngredients)
         {
-            return false;
+            if (otherIngredients.Count != recipe.Count)
+            {
+                return false;
+            }
+
+            for (int i = 0; i < recipe.Count; i++)
+            {
+                if (otherIngredients[i] != recipe[i])
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }
