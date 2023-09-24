@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     public float horizontalInput;
     public float verticalInput;
     public float jumpInput;
-    
+
     // properties
     public float speed = 5.0f;
     public float maxSpeedMultiplier = 1.0f;
@@ -16,12 +16,12 @@ public class PlayerController : MonoBehaviour
     public bool isAscending;
     public bool isDescending;
     private float maxFallVelocity = 40.0f;
-    
+
     // Components
     private Vector2 gravity;
     private Rigidbody2D rb;
     private GameObject currentGround;
-    
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -32,10 +32,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         setAscendingDescending();
-        
+
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
-        
+
         // -------------- horizontal mechanics --------------
         //transform.Translate(Vector2.right * Time.deltaTime * horizontalInput * speed);
         if (Math.Abs(horizontalInput) == 1.0f)
@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
             maxSpeedMultiplier = 1.0f;
         }
         rb.velocity = new Vector2(horizontalInput * speed * maxSpeedMultiplier, rb.velocity.y);
-        
+
 
         // -------------- jump mechanics -------------
         if (isGrounded)
@@ -72,8 +72,8 @@ public class PlayerController : MonoBehaviour
         if (rb.velocity.y < 0)
         {
             // if player has started falling down, then increase its speed
-            rb.velocity -= gravity 
-                           * Time.deltaTime 
+            rb.velocity -= gravity
+                           * Time.deltaTime
                            * Math.Max(Math.Abs(transform.position.y - currentGround.transform.position.y), -maxFallVelocity);
         }
     }

@@ -10,11 +10,11 @@ public class RecipeController : MonoBehaviour
     public GameObject prefabVanillaCream;
     public GameObject prefabChocolateCream;
     public GameObject prefabStrawberries;
-    
+
     private Camera cam;
     private float halfWayWidth;
     private bool moving = true;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +35,7 @@ public class RecipeController : MonoBehaviour
     {
         Random rnd = new Random();
         int num = rnd.Next(Recipes.Recipes.recipes.Count);
-        
+
         return Recipes.Recipes.recipes[num];
     }
 
