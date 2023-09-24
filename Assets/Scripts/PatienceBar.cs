@@ -14,6 +14,8 @@ public class PatienceBar : MonoBehaviour
     private float startTime;        // Time when the countdown starts
     private float patienceRate;     // Rate at which patience decreases per second
 
+    [SerializeField] private GameObject customerParent;
+
     void Start()
     {
         // Initialize current patience to the maximum value
@@ -55,8 +57,23 @@ public class PatienceBar : MonoBehaviour
         // This function is called when the countdown timer ends
         // TODO: You can perform any desired actions here
         Debug.Log("The customer's patience just ran out!");
+        // Deactivate the customer parent GameObject
+        customerParent.SetActive(false);
+    }
+    public void Initialize(float patienceDuration)
+    {
+        // Set the duration for the patience bar
+        duration = patienceDuration;
+
+        // Initialize other properties or UI elements as needed
+        SetMaxPatience(maxPatience);
     }
 
+    public void UpdatePatience(float currentPatience)
+    {
+        // Update the UI to reflect the current patience value
+        SetPatience(Mathf.RoundToInt(currentPatience));
+    }
     public void SetMaxPatience(int patience)
     {
         // Set the maximum value for the UI slider
