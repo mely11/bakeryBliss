@@ -13,11 +13,14 @@ public class PatienceBar : MonoBehaviour
     private float initialPatience;  // Initial patience value
     private float startTime;        // Time when the countdown starts
     private float patienceRate;     // Rate at which patience decreases per second
+    private SpriteController _spriteController;
 
     [SerializeField] private GameObject customerParent;
 
     void Start()
     {
+        _spriteController = GameObject.Find("GameInfoCanvas").GetComponent<SpriteController>();
+        CreatePatienceBar();
         // Initialize current patience to the maximum value
         currentPatience = maxPatience;
 
@@ -93,6 +96,25 @@ public class PatienceBar : MonoBehaviour
 
         // Update the color of the patience bar fill based on the normalized patience value and gradient
         fill.color = gradient.Evaluate(slider.normalizedValue);
+    }
+
+    private void CreatePatienceBar()
+    {
+        GameObject patienceBar = new GameObject("PatienceBar");
+        patienceBar.transform.SetParent(gameObject.transform);
+        
+        // set position within the parent object
+        patienceBar.AddComponent<RectTransform>();
+        RectTransform rectTransform = patienceBar.GetComponent<RectTransform>();
+        rectTransform.SetParent(this.gameObject.GetComponent<RectTransform>().transform);
+        rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, -68, 64);
+        rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, 0, 10);
+        
+        // assign sprite image
+        patienceBar.AddComponent<CanvasRenderer>();
+        patienceBar.AddComponent<Image>();
+        Image image = patienceBar.GetComponent<Image>();
+        image.sprite = _spriteController.patienceBar;
     }
 }
 

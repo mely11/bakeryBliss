@@ -9,7 +9,7 @@ public class ChefCollisions : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        collectedIngredients = new List<Ingredient>();
     }
 
     // Update is called once per frame
@@ -44,6 +44,4 @@ public class ChefCollisions : MonoBehaviour
     {
         return order.equalsPlayerIngredients(collectedIngredients);
     }
-
-
 }
