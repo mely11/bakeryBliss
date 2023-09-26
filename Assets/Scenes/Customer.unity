@@ -916,6 +916,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4472151691886676109, guid: aeb738933c574403b9622e6785502896, type: 3}
+      propertyPath: m_text
+      value: '- Move with arrow keys and jump with space bar
+
+        - Walk through
+        an item to collect it
+
+        - Collect items in the order they appear in
+        the queue on the top left
+
+        - You cannot undo an item that is collected
+        if it is in the wrong order
+
+        - Deliver orders quickly, before patience
+        runs out'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aeb738933c574403b9622e6785502896, type: 3}
 --- !u!1001 &884656628
