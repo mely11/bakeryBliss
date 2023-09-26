@@ -61,9 +61,8 @@ public class CustomerController : MonoBehaviour
         // Award the payment amount to the chef
         //_scoreManager.AddToScore(paymentAmount);
 
+        Debug.Log("Order has been Fulfilled!");
         hasOrderBeenFulfilled = true;
-        // Destroy the entire CustomerParent GameObject, including both customer and patience bar
-        //Destroy(transform.parent.gameObject);
     }
 
     
@@ -83,8 +82,8 @@ public class CustomerController : MonoBehaviour
         customer.AddComponent<RectTransform>();
         RectTransform rectTransform = customer.GetComponent<RectTransform>();
         rectTransform.SetParent(this.gameObject.GetComponent<RectTransform>().transform); // child of the CustomerPanel created in CustomerQueueController
-        rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 66, 64);
-        rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, 0, 128);
+        rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 40, 64);
+        rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, 25, 128);
         //customer.AddComponent<CanvasRenderer>();
         
         // set order
@@ -103,8 +102,8 @@ public class CustomerController : MonoBehaviour
         patienceBar = patienceBarInstance.GetComponent<PatienceBar>();
         RectTransform rectTransform2 = patienceBarInstance.GetComponent<RectTransform>();
         rectTransform2.SetParent(gameObject.transform.GetComponent<RectTransform>().transform); // child of the CustomerPanel created in CustomerQueueController
-        rectTransform2.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 10, 80);
-        rectTransform2.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, 20, 20);
+        rectTransform2.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 10, 140);
+        rectTransform2.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, 0, 20);
     }
     
 }

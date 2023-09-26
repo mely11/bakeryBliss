@@ -4,12 +4,12 @@
 public class Chef : MonoBehaviour
 {
     // Jump parameters.
-    public float maxJumpHeight = 3.99f, minJumpHeight = 1.1f, timeToJumpApex = .39f;
+    public float maxJumpHeight = 5.5f, minJumpHeight = 1.1f, timeToJumpApex = .49f;
     private readonly float accelerationTimeAirborne = .21f;
     private readonly float accelerationTimeGrounded = .11f;
 
     // Movement speed and wall jump settings.
-    private readonly float moveSpeed = 5.99f;
+    private readonly float moveSpeed = 8.0f;
     public Vector2 wallJumpClimb, wallJumpOff, wallLeap;
 
     // Wall sliding settings.

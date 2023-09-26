@@ -39,7 +39,7 @@ public class RecipeController : MonoBehaviour
             currentIngredientGameObject.AddComponent<RectTransform>();
             RectTransform rectTransform = currentIngredientGameObject.GetComponent<RectTransform>();
             rectTransform.SetParent(this.gameObject.GetComponent<RectTransform>().transform); // child of the CustomerPanel created in CustomerQueueController
-            rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 90, 100);
+            rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 140, 100);
             rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top,  100 - (i * 30), 30);
             currentIngredientGameObject.AddComponent<CanvasRenderer>();
             currentIngredientGameObject.AddComponent<Image>();
