@@ -29,7 +29,7 @@ public class MyItemsController : MonoBehaviour
                 nextItem++;
             }
         }
-        catch (Exception e) { }
+        catch (Exception) { }
     }
 
     private void DrawItem(int nextItemId)
