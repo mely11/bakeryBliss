@@ -44,4 +44,9 @@ public class ChefCollisions : MonoBehaviour
     {
         return order.equalsPlayerIngredients(collectedIngredients);
     }
+
+    public void clearList()
+    {
+        collectedIngredients.Clear();
+    }
 }
