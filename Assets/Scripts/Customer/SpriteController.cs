@@ -13,4 +13,5 @@ public class SpriteController : MonoBehaviour
     public Sprite sadCustomer;
     public Sprite patienceBar;
     public Sprite heartSymbol;
+    public GameObject patienceBarPrefab;
 }
