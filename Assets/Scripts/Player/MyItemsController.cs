@@ -65,6 +65,7 @@ public class MyItemsController : MonoBehaviour
     public void DestroyMyItemsUI()
     {
         Destroy(myItemsObject);
+        _playerCollisions.clearList();
         CreateEmptyMyItemsDisplayObject();
     }
 
@@ -77,5 +78,6 @@ public class MyItemsController : MonoBehaviour
         rectTransform.SetParent(this.gameObject.GetComponent<RectTransform>().transform);
         rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 160, 128);
         rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, 20, 128);
+        nextItem = 0;
     }
 }
