@@ -1,13 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
-using Recipes;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class CustomerQueueController : MonoBehaviour
 {
-    public Queue<GameObject> queue;
+    public Queue<GameObject> queue = new Queue<GameObject>();
     public int customerCount;
     
     // Start is called before the first frame update
@@ -22,7 +18,7 @@ public class CustomerQueueController : MonoBehaviour
 
     }
 
-    public void AddCustomer(GameObject customerPanel)
+    void AddCustomer(GameObject customerPanel)
     {
         queue.Enqueue(customerPanel);
     }
