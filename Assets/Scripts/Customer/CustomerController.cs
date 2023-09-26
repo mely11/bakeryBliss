@@ -6,10 +6,8 @@ public class CustomerController : MonoBehaviour
 {
     // Define the customer's attributes
     public GameObject customer;
-    public float patienceDuration = 30.0f; // Maximum patience duration for this customer
     public int paymentAmount = 10; // Dollar amount for successfully completing the order
 
-    private float patienceTimer; // Timer for tracking patience
     private bool hasOrderBeenFulfilled;
 
     private ScoreManager _scoreManager;
@@ -17,6 +15,7 @@ public class CustomerController : MonoBehaviour
     private SpriteController spriteController;
     private PatienceBar patienceBar; 
     private Recipe order; // List of ingredients in the customer's order
+    private GameObject patienceBarInstance;
     
     // Initialize the customer's attributes
     void Start()
@@ -24,12 +23,8 @@ public class CustomerController : MonoBehaviour
         // Get references to controllers we need to do operations
         spriteController = GameObject.Find("GameInfoCanvas").GetComponent<SpriteController>();
         InitializeAndDisplayCustomer();
-        InitializePatienceBar();
-        order = customer.GetComponent<RecipeController>().customerOrder;
-        GameObject player = GameObject.Find("Player");
-        Debug.Log(player);
-        _playerCollisions = GameObject.Find("Player").GetComponent<ChefCollisions>();
-        _scoreManager = GameObject.Find("Player").GetComponent<ScoreManager>();
+        _playerCollisions = GameObject.FindWithTag("Player").GetComponent<ChefCollisions>();
+        _scoreManager = GameObject.FindWithTag("Player").GetComponent<ScoreManager>();
     }
     
     // Update is called once per frame
@@ -38,13 +33,10 @@ public class CustomerController : MonoBehaviour
         // Decrement patience over time
         if (!hasOrderBeenFulfilled)
         {
-            patienceTimer -= Time.deltaTime;
-            UpdatePatienceBar();
-
             // Check if patience has run out
-            if (patienceTimer <= 0.0f)
+            if (patienceBar.currentPatience <= 0.0f)
             {
-                //OnPatienceRunOut();
+                OnPatienceRunOut();
             }
             if (_playerCollisions.collectedIngredients.Count == order.recipe.Count)
             {
@@ -83,13 +75,6 @@ public class CustomerController : MonoBehaviour
         Destroy(transform.parent.gameObject);
     }
 
-    private void InitializePatienceBar()
-    {
-        patienceBar = customer.GetComponent<PatienceBar>();
-        patienceTimer = patienceDuration;
-        patienceBar.Initialize(patienceDuration);
-    }
-
     private void InitializeAndDisplayCustomer()
     {
         customer = new GameObject("Customer");
@@ -100,17 +85,25 @@ public class CustomerController : MonoBehaviour
         rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 66, 64);
         rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, 0, 128);
         //customer.AddComponent<CanvasRenderer>();
-        customer.AddComponent<Image>();
-        customer.AddComponent<PatienceBar>();
+        
+        // set order
         customer.AddComponent<RecipeController>();
+        customer.GetComponent<RecipeController>().SetCustomerOrder();
+        order = customer.GetComponent<RecipeController>().customerOrder;
+
+        // Set customer image
+        customer.AddComponent<Image>();
         Image customerImage = customer.GetComponent<Image>();
         customerImage.sprite = spriteController.happyCustomer;
-    }
 
-    // Update the patience bar's visual representation
-    private void UpdatePatienceBar()
-    {
-        // Update the UI to reflect the remaining patience time
-        //patienceBar.UpdatePatience(patienceTimer);
+        GameObject patienceBarPrefab = spriteController.patienceBarPrefab;
+        patienceBarInstance = Instantiate(patienceBarPrefab, new Vector3(), Quaternion.identity);
+        patienceBarInstance.transform.SetParent(gameObject.transform);
+        patienceBar = patienceBarInstance.GetComponent<PatienceBar>();
+        RectTransform rectTransform2 = patienceBarInstance.GetComponent<RectTransform>();
+        rectTransform2.SetParent(gameObject.transform.GetComponent<RectTransform>().transform); // child of the CustomerPanel created in CustomerQueueController
+        rectTransform2.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 10, 80);
+        rectTransform2.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, 20, 20);
     }
+    
 }

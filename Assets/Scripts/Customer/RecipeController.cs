@@ -12,7 +12,6 @@ public class RecipeController : MonoBehaviour
     void Start()
     {
         spriteController = GameObject.Find("GameInfoCanvas").GetComponent<SpriteController>();
-        customerOrder = getCustomerOrder();
         createIngredientGameObjects();
     }
 
@@ -22,12 +21,12 @@ public class RecipeController : MonoBehaviour
 
     }
 
-    private Recipe getCustomerOrder()
+    public void SetCustomerOrder()
     {
         Random rnd = new Random();
         int num = rnd.Next(Recipes.Recipes.recipes.Count);
 
-        return Recipes.Recipes.recipes[num];
+        customerOrder = Recipes.Recipes.recipes[num];
     }
 
     void createIngredientGameObjects()
