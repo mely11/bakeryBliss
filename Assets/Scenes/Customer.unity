@@ -473,7 +473,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 735365090253824989, guid: f2259776d9c3e415abefd38ec022f630, type: 3}
       propertyPath: m_Name
-      value: 'ChocolateCreamIngredient '
+      value: ChocolateCreamIngredient
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2259776d9c3e415abefd38ec022f630, type: 3}
@@ -954,7 +954,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8488466321670039916, guid: f1e0323989b2149ee9c0d4011a2fbe8c, type: 3}
       propertyPath: m_Name
-      value: StrawberryIngredient (1)
+      value: StrawberryIngredient
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1e0323989b2149ee9c0d4011a2fbe8c, type: 3}
