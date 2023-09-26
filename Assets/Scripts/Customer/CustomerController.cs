@@ -1,4 +1,5 @@
 using Recipes;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,6 +24,7 @@ public class CustomerController : MonoBehaviour
         // Get references to controllers we need to do operations
         spriteController = GameObject.Find("GameInfoCanvas").GetComponent<SpriteController>();
         InitializeAndDisplayCustomer();
+        
         _playerCollisions = GameObject.FindWithTag("Player").GetComponent<ChefCollisions>();
         _scoreManager = GameObject.FindWithTag("Player").GetComponent<ScoreManager>();
     }
@@ -72,7 +74,6 @@ public class CustomerController : MonoBehaviour
         _scoreManager.DeductFromScore(paymentAmount / 2);
 
         // Destroy the entire CustomerParent GameObject, including both customer and patience bar
-        Destroy(transform.parent.gameObject);
     }
 
     private void InitializeAndDisplayCustomer()

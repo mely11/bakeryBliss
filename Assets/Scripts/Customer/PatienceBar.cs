@@ -13,6 +13,7 @@ public class PatienceBar : MonoBehaviour
     private float initialPatience;  // Initial patience value
     private float startTime;        // Time when the countdown starts
     private float patienceRate;     // Rate at which patience decreases per second
+    private CustomerQueueController _customerQueueController;
 
     void Start()
     {
@@ -30,6 +31,8 @@ public class PatienceBar : MonoBehaviour
 
         // Calculate the rate at which patience decreases per second
         patienceRate = maxPatience / duration;
+        
+        _customerQueueController = GameObject.Find("CustomerQueuePanel").GetComponent<CustomerQueueController>();
     }
 
     void Update()
@@ -53,7 +56,7 @@ public class PatienceBar : MonoBehaviour
     void OnEnd()
     {
         // This function is called when the countdown timer ends
-        // TODO: You can perform any desired actions here
+        _customerQueueController.RemoveCustomer();
         Debug.Log("The customer's patience just ran out!");
     }
 
